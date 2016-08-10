@@ -29,7 +29,7 @@ char * getBathroomDialog() {
 }
 
 char * getLibraryDialog() {
-    return "Books! Glorious Book! Glorious Books! Gloooriiiousss Booooks!!! And no dogs";
+    return "Books! Glorious Books! Gloooriiiousss Booooks!!! And no dogs!";
 }
 
 void interactWithKitchen(int yesOrNo) {
