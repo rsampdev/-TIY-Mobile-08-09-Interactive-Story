@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
 
 void startGame(bool override) {
     char yes[3] = "yes";
-    char exit[4] = "exit";
+    char leave[5] = "leave";
     int roomNumber = -1;
     char * roomName = "";
     char userInput[1] = " ";
@@ -60,7 +60,7 @@ void startGame(bool override) {
             printf("\n\nEnter the corresponding number for the room to go inside it.");
             printf("\n\nEnter 1: kitchen, Enter 2: living room, Enter 3: bedroom.");
             printf("\n\nEnter 4: basement, Enter 5: bathroom, Enter 6: library.");
-            printf("\n\nOnce inside of a room enter 7 for the hallway. Type 'exit' to leave the house when in the hallway\n\n");
+            printf("\n\nOnce inside of a room enter 7 for the hallway. Type 'leave' to leave the house when in the hallway\n\n");
             
             fpurge(stdin);
             scanf("%s", userInput);
