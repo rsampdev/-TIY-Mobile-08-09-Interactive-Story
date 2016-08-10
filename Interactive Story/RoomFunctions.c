@@ -17,11 +17,11 @@ char * getLivingRoomDialog() {
 }
 
 char * getBedroomDialog() {
-    return "Inside the bedroom there is only a bedframe and a lamp.\n\n";
+    return "Inside the bedroom there is only a bedframe and a lamp.\n";
 }
 
 char * getBasementDialog() {
-    return "Inside you find your dog eating spiders. You pick it up and leave the house. Never to return.\n\n";
+    return "Inside you find your dog eating spiders. You pick it up and leave the house. Never to return.\n";
 }
 
 char * getBathroomDialog() {
@@ -29,7 +29,7 @@ char * getBathroomDialog() {
 }
 
 char * getLibraryDialog() {
-    return "Books! Glorious Books! Gloooriiiousss Booooks!!! And no dogs!\n\n";
+    return "Books! Glorious Books! Gloooriiiousss Booooks!!! And no dogs!\n";
 }
 
 void interactWithKitchen(int yesOrNo) {
