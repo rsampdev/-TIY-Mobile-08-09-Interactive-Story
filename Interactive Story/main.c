@@ -65,7 +65,7 @@ void startGame(bool override) {
             fpurge(stdin);
             scanf("%s", userInput);
         
-            if (userInput[0] == exit[0]) {
+            if (userInput[0] == leave[0]) {
                 printf("\nYou leave the house and go catch that pokemon. The next day you get a new dog. You lose that one too.");
                 gameOver();
             }
