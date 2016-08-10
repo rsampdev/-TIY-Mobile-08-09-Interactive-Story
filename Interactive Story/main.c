@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <term.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -15,6 +16,8 @@
 void startGame(bool override);
 
 void gameOver();
+
+void clearScreen();
 
 int main(int argc, const char * argv[]) {
     
@@ -25,6 +28,7 @@ int main(int argc, const char * argv[]) {
 
 void startGame(bool override) {
     char yes[3] = "yes";
+    char exit[4] = "exit";
     int roomNumber = -1;
     char * roomName = "";
     char userInput[1] = " ";
@@ -34,7 +38,7 @@ void startGame(bool override) {
     
     printf("You are walking your dog one day when you find a pokemon with your phone.");
     printf("\n\nWhile you are trying to do curve balls your dog gets lose and runs away.");
-    printf("\n\nYou chase it all th way down the street until you reach an old abandoned house.");
+    printf("\n\nYou chase it all the way down the street until you reach an old abandoned house.");
     printf("\n\nThe house's door is open and your dog runs inside. Do you go inside the house to find your dog?");
     printf("\n\nType 'yes' to go inside the house or 'no' to leave.\n\n");
     
@@ -56,10 +60,15 @@ void startGame(bool override) {
             printf("\n\nEnter the corresponding number for the room to go inside it.");
             printf("\n\nEnter 1: kitchen, Enter 2: living room, Enter 3: bedroom.");
             printf("\n\nEnter 4: basement, Enter 5: bathroom, Enter 6: library.");
-            printf("\n\nOnce inside of a room enter 7 for the hallway.\n\n");
+            printf("\n\nOnce inside of a room enter 7 for the hallway. Type 'exit' to leave the house when in the hallway\n\n");
             
             fpurge(stdin);
             scanf("%s", userInput);
+        
+            if (userInput[0] == exit[0]) {
+                printf("\nYou leave the house and go catch that pokemon. The next day you get a new dog. You lose that one too.");
+                gameOver();
+            }
             
             for (int i = 0; i < 7; i++) {
                 if (userInput[0] == roomOptions[i]) {
@@ -94,7 +103,7 @@ void startGame(bool override) {
                             break;
                     }
                     
-                    printf("\nYou go into the %s.", roomName);
+                    printf("\nYou go into the %s.\n", roomName);
                     
                     insideRoom = true;
                 }
@@ -103,14 +112,13 @@ void startGame(bool override) {
             while (insideRoom) {
                 switch (roomNumber) {
                     case 1: {
-                        printf("\n\n%s", getKitchenDialog());
+                        printf("\n%s", getKitchenDialog());
                         
                         fpurge(stdin);
-                        scanf("\n\n%s", userInput);
+                        scanf("\n%s", userInput);
                         
                         if (userInput[0] == '0') {
                             interactWithKitchen(0);
-                            
                             insideRoom = false;
                             insideHouse = false;
                             gameOver();
@@ -210,8 +218,8 @@ void startGame(bool override) {
 }
 
 void gameOver() {
-    printf("\n\nGame Over!\n");
-    printf("\nDo you want to play again? Type '0' to play again or type '1' to close the program: ");
+    printf("\n\nGame Over!\n\n");
+    printf("Do you want to play again? Type '0' to play again or type '1' to close the program: ");
     
     char close = ' ';
     
@@ -220,9 +228,29 @@ void gameOver() {
     
     if (close == '0') {
         
-        system ("clear");
+        // clearScreen();
         
-        printf("\n\n");
+        printf("\n");
+        printf("restarting...\n\n");
+        sleep(1);
+        printf("restarting...\n\n");
+        sleep(1);
+        printf("restarting...\n\n");
+        sleep(1);
+        printf("_____________\n\n");
+        
         startGame(true);
     }
 }
+
+/* void clearScreen() {
+ if (!cur_term) {
+ int result;
+ setupterm( NULL, STDOUT_FILENO, &result );
+ if (result <= 0) {
+ return;
+ }
+ }
+ 
+ putp( tigetstr( "clear" ) );
+ } */

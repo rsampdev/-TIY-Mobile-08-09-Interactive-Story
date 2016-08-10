@@ -17,11 +17,11 @@ char * getLivingRoomDialog() {
 }
 
 char * getBedroomDialog() {
-    return "Inside the bedroom there is only a bedframe and a lamp.";
+    return "Inside the bedroom there is only a bedframe and a lamp.\n\n";
 }
 
 char * getBasementDialog() {
-    return "Inside you find your dog eating spiders. You pick it up and leave the house. Never to return.";
+    return "Inside you find your dog eating spiders. You pick it up and leave the house. Never to return.\n\n";
 }
 
 char * getBathroomDialog() {
@@ -29,14 +29,14 @@ char * getBathroomDialog() {
 }
 
 char * getLibraryDialog() {
-    return "Books! Glorious Books! Gloooriiiousss Booooks!!! And no dogs!";
+    return "Books! Glorious Books! Gloooriiiousss Booooks!!! And no dogs!\n\n";
 }
 
 void interactWithKitchen(int yesOrNo) {
     if (yesOrNo == 0) {
-        printf("\n\nYou turn the stove on and stare deeply into the fire.\n\n'Am I in a function' you think.\n\nYou stay there forever.");
+        printf("\nYou turn the stove on and stare deeply into the fire.\n\n'Am I in a function' you think.\n\nYou stay there forever.");
     } else {
-        printf("\n\nYou leave the stove alone.\n\n");
+        printf("\nYou leave the stove alone.");
     }
 }
 
@@ -44,6 +44,6 @@ void interactWithLivingRoom(int yesOrNo) {
     if (yesOrNo == 0) {
         printf("\nYou turn it on. The dog does not come.");
     } else {
-        printf("\n\nYou leave the radio alone.\n\n");
+        printf("\nYou leave the radio alone.");
     }
 }
