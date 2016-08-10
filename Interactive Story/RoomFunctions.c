@@ -17,7 +17,7 @@ char * getLivingRoomDialog() {
 }
 
 char * getBedroomDialog() {
-    return "Inside the bedroom there is only a bedframe and a lamp.\n";
+    return "Inside the bedroom there is only an empty bedframe and a broken lamp.\n";
 }
 
 char * getBasementDialog() {
@@ -36,7 +36,7 @@ void interactWithKitchen(int yesOrNo) {
     if (yesOrNo == 0) {
         printf("\nYou turn the stove on and stare deeply into the fire.\n\n'Am I in a function' you think.\n\nYou stay there forever.");
     } else {
-        printf("\nYou leave the stove alone.");
+        printf("\nYou leave the stove alone.\n");
     }
 }
 
@@ -44,6 +44,6 @@ void interactWithLivingRoom(int yesOrNo) {
     if (yesOrNo == 0) {
         printf("\nYou turn it on. The dog does not come.");
     } else {
-        printf("\nYou leave the radio alone.");
+        printf("\nYou leave the radio alone.\n");
     }
 }

@@ -17,7 +17,7 @@ void startGame(bool override);
 
 void leaveRoom(char * userInput, bool * insideRoom);
 
-void gameOver();
+void gameOver(bool override);
 
 void clearScreen();
 
@@ -31,8 +31,9 @@ int main(int argc, const char * argv[]) {
 void startGame(bool override) {
     char yes[3] = "yes";
     char leave[5] = "leave";
+    int roomNumber = -1;
     char * roomName = "";
-    char userInput[1] = {'6'};
+    char userInput[1] = " ";
     bool insideRoom = false;
     bool insideHouse = false;
     char roomOptions[7] = {'1', '2', '3', '4', '5', '6', '7'};
@@ -54,58 +55,66 @@ void startGame(bool override) {
         printf("\n\nFrom the door the three on the right are a a set of stairs that go to the basement, a bathroom and a library.");
         
         insideHouse = true;
+        userInput[0] = '6';
         
         while(insideHouse) {
             
             printf("\n\nEnter the corresponding number for the room to go inside it.");
             printf("\n\nEnter 1: kitchen, Enter 2: living room, Enter 3: bedroom.");
             printf("\n\nEnter 4: basement, Enter 5: bathroom, Enter 6: library.");
-            printf("\n\nOnce inside of a room enter 7 for the hallway. Type 'leave' to leave the house when in the hallway.\n\n");
+            printf("\n\nOnce inside of a room enter 7 for the hallway. Type 'leave' to leave the house when in the hallway\n\n");
             
             fpurge(stdin);
             scanf("%s", userInput);
         
             if (userInput[0] == leave[0]) {
                 printf("\nYou leave the house and go catch that pokemon. The next day you get a new dog. You lose that one too.");
-                gameOver();
+                gameOver(false);
             }
             
             for (int i = 0; i < 7; i++) {
                 if (userInput[0] == roomOptions[i]) {
+                    roomNumber = roomOptions[i];
                     
                     switch (userInput[0]) {
                         case '1':
                             roomName = "kitchen";
+                            roomNumber = 1;
                             break;
                         case '2':
                             roomName = "living room";
+                            roomNumber = 2;
                             break;
                         case '3':
                             roomName = "bedroom";
+                            roomNumber = 3;
                             break;
                         case '4':
                             roomName = "basement";
+                            roomNumber = 4;
                             break;
                         case '5':
                             roomName = "bathroom";
+                            roomNumber = 5;
                             break;
                         case '6':
                             roomName = "library";
+                            roomNumber = 6;
                             break;
                         default:
                             break;
                     }
                     
-                    printf("\nYou go into the %s.\n", roomName);
+                    printf("\nYou go into the %s.\n\n", roomName);
                     
                     insideRoom = true;
                 }
             }
             
             while (insideRoom) {
-                switch (roomName[0]) {
-                    case '1': {
-                        printf("\n%s", getKitchenDialog());
+                switch (roomNumber) {
+                    case 1: {
+                        printf("%s", getKitchenDialog());
                         
                         fpurge(stdin);
                         scanf("\n%s", userInput);
@@ -114,23 +123,14 @@ void startGame(bool override) {
                             interactWithKitchen(0);
                             insideRoom = false;
                             insideHouse = false;
-                            gameOver();
+                            gameOver(false);
                         } else {
                             interactWithKitchen(1);
-                            
-                            printf("\n\nType '7' to leave the room: ");
-                            fpurge(stdin);
-                            scanf("%s", userInput);
-                            if (userInput[0] == '7') {
-                                printf("\nYou are back in the hallway");
-                                insideRoom = false;
-                            }
+                            leaveRoom(userInput, &insideRoom);
                         }
-                        
-                        break;
                     }
-                    case '2':{
-                        printf("\n\n%s", getLivingRoomDialog());
+                    case 2:{
+                        printf("%s", getLivingRoomDialog());
                         
                         fpurge(stdin);
                         scanf("\n\n%s", userInput);
@@ -142,46 +142,44 @@ void startGame(bool override) {
                         }
                         
                         leaveRoom(userInput, &insideRoom);
-                        break;
                     }
-                    case '3':  {
-                        printf("\n\n%s", getBedroomDialog());
+                    case 3:  {
+                        printf("%s", getBedroomDialog());
                         
                         leaveRoom(userInput, &insideRoom);
-                        break;
                     }
-                    case '4': {
-                        printf("\n\n%s", getBasementDialog());
+                    case 4: {
+                        printf("%s", getBasementDialog());
                         insideRoom = false;
                         insideHouse = false;
-                        gameOver();
-                        break;
+                        gameOver(false);
                     }
-                    case '5':  {
-                        printf("\n\n%s", getBathroomDialog());
+                    case 5:  {
+                        printf("%s", getBathroomDialog());
                         
                         leaveRoom(userInput, &insideRoom);
-                        break;
                     }
-                    case '6': {
-                        printf("\n\n%s", getLibraryDialog());
+                    case 6: {
+                        printf("%s", getLibraryDialog());
                         
                         leaveRoom(userInput, &insideRoom);
-                        break;
                     }
                     default:
+                        printf("How did you even get here?");
+                        gameOver(true);
                         break;
                 }
+                
             }
+            
         }
         
-        gameOver();
+        gameOver(false);
         
     } else {
         printf("\nYou leave the house and go catch that pokemon. The next day you get a new dog. You lose that one too.");
-        gameOver();
+        gameOver(false);
     }
-    
 }
 
 void leaveRoom(char * userInput, bool * insideRoom) {
@@ -197,7 +195,7 @@ void leaveRoom(char * userInput, bool * insideRoom) {
     }
 }
 
-void gameOver() {
+void gameOver(bool override) {
     printf("\n\nGame Over!\n\n");
     printf("Do you want to play again? Type '0' to play again or type '1' to close the program: ");
     
@@ -206,7 +204,7 @@ void gameOver() {
     fpurge(stdin);
     scanf("%c", &close);
     
-    if (close == '0') {
+    if (override || close == '0') {
         
         // clearScreen();
         
