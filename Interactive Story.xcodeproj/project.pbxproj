@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		332B1F981D5A73B800113C96 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 332B1F971D5A73B800113C96 /* main.c */; };
+		332B1FA01D5AA38D00113C96 /* RoomFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 332B1F9E1D5AA38D00113C96 /* RoomFunctions.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		332B1F941D5A73B800113C96 /* Interactive Story */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Interactive Story"; sourceTree = BUILT_PRODUCTS_DIR; };
 		332B1F971D5A73B800113C96 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		332B1F9E1D5AA38D00113C96 /* RoomFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RoomFunctions.c; sourceTree = "<group>"; };
+		332B1F9F1D5AA38D00113C96 /* RoomFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomFunctions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				332B1F971D5A73B800113C96 /* main.c */,
+				332B1F9E1D5AA38D00113C96 /* RoomFunctions.c */,
+				332B1F9F1D5AA38D00113C96 /* RoomFunctions.h */,
 			);
 			path = "Interactive Story";
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332B1FA01D5AA38D00113C96 /* RoomFunctions.c in Sources */,
 				332B1F981D5A73B800113C96 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +252,7 @@
 				332B1F9D1D5A73B800113C96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
